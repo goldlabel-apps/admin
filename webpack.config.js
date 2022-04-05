@@ -27,5 +27,4 @@ module.exports = (webpackConfigEnv, argv) => {
       "@listingslab/shared",
     ],
   });
-
 };
