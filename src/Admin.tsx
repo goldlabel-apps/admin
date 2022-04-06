@@ -3,12 +3,20 @@ import * as React from "react";
 import * as shared from "@listingslab/shared";
 // @ts-ignore
 import { Provider } from "react-redux";
-import Dashboard from "./Dashboard";
+// @ts-ignore
+import { createTheme, ThemeProvider, Box } from "@mui/material";
+import Renderer from "./Renderer";
 
 export default function Admin() {
+  const { getDesignTokens } = shared;
+  const darkLight = "light";
+  const theme = createTheme(getDesignTokens(darkLight));
+
   return (
     <Provider store={shared.store}>
-      <Dashboard />
+      <ThemeProvider theme={theme}>
+        <Renderer />
+      </ThemeProvider>
     </Provider>
   );
 }
