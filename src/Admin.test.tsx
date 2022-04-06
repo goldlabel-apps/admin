@@ -1,9 +1,9 @@
 import { render } from "@testing-library/react";
-import Root from "./root.component";
+import Admin from "./Admin";
 
-describe("Root component", () => {
+describe("Admin component", () => {
   it("should be in the document", () => {
-    // const { getByText } = render(<Root name="Testapp" />);
+    // const { getByText } = render(<Admin name="Testapp" />);
     // expect(getByText(/Testapp is mounted!/i)).toBeInTheDocument();
   });
 });

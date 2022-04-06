@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import singleSpaReact from "single-spa-react";
-import Root from "./root.component";
+import Admin from "./Admin";
 
 const lifecycles = singleSpaReact({
   React,
   ReactDOM,
-  rootComponent: Root,
+  rootComponent: Admin,
   errorBoundary(err, info, props) {
-    // Customize the root error boundary for your microfrontend here.
+    console.warn("admin", err, info, props);
     return null;
   },
 });
