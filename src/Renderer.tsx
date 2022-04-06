@@ -2,13 +2,7 @@ import * as React from "react";
 // @ts-ignore
 import * as shared from "@listingslab/shared";
 // @ts-ignore
-import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Box,
-} from "@mui/material";
+import { Dialog, DialogTitle, DialogContent, DialogActions, Box } from "@mui/material";
 
 export default function Renderer() {
   const {
