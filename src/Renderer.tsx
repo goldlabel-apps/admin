@@ -2,7 +2,15 @@ import * as React from "react";
 // @ts-ignore
 import * as shared from "@listingslab/shared";
 // @ts-ignore
-import { Dialog, DialogTitle, DialogContent, DialogActions, Box } from "@mui/material";
+import {
+  IconButton,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Box,
+  Typography,
+} from "@mui/material";
 
 export default function Renderer() {
   const {
@@ -17,14 +25,13 @@ export default function Renderer() {
     signIn,
   } = shared;
 
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [email, setEmail] = React.useState("listingslab@gmail.com");
+  const [password, setPassword] = React.useState("2022@^");
   const [emailValid, setEmailValid] = React.useState(false);
   const [valid, setValid] = React.useState(false);
-
   const dispatch = useAppDispatch();
   const admin = useAppSelector(selectAdmin);
-  const { open, authed } = admin;
+  const { open, uid } = admin;
 
   const handleClose = () => {
     dispatch(toggleAdmin(false));
@@ -52,9 +59,11 @@ export default function Renderer() {
     dispatch(signIn(email, password));
   };
 
+  if (uid) return null;
+
   return (
     <Dialog
-      fullScreen={authed}
+      fullScreen={uid}
       fullWidth
       maxWidth="xs"
       open={open}
@@ -62,11 +71,24 @@ export default function Renderer() {
       sx={{ zIndex: 123456 }}
     >
       <DialogTitle sx={{ textAlign: "center" }}>
-        <Icon icon="admin" />
+        <Box sx={{ display: "flex" }}>
+          <Box sx={{ m: 1 }}>
+            <Icon icon="admin" />
+          </Box>
+          <Box sx={{ m: 1 }}>
+            <Typography>Admin</Typography>
+          </Box>
+          <Box sx={{ flexGrow: 1 }} />
+          <Box>
+            <IconButton color="primary" onClick={handleClose}>
+              <Icon icon="close" />
+            </IconButton>
+          </Box>
+        </Box>
       </DialogTitle>
 
       <DialogContent>
-        <InputEmail value={email} onChange={onEmailChange} />
+        <InputEmail value={email} valid={emailValid} onChange={onEmailChange} />
         <InputPassword value={password} onChange={onPasswordChange} />
       </DialogContent>
 
@@ -79,4 +101,12 @@ export default function Renderer() {
 
 /*
 <pre>{JSON.stringify(admin, null, 2)}</pre>
+<IconButton
+  color="primary"
+  onClick={(e) => {
+    e.preventDefault();
+  }}
+>
+  <Icon icon="help" />
+</IconButton>
 */
