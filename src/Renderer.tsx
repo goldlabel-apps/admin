@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as React from "react";
 // @ts-ignore
 import * as shared from "@listingslab/shared";
