@@ -1,6 +1,6 @@
 {
   "name": "@listingslab/admin",
-  "version": "19.8.0",
+  "version": "20.0.0",
   "scripts": {
     "start": "webpack serve --port 1066 --env isLocal",
     "start:standalone": "webpack serve --env standalone",
